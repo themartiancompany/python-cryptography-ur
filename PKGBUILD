@@ -3,7 +3,7 @@
 pkgname=python-cryptography
 pkgver=41.0.1
 _commit=d02de9f26e9a2353e89427c1cea8b9ed2bae969e
-pkgrel=1
+pkgrel=2
 pkgdesc="A package designed to expose cryptographic recipes and primitives to Python developers"
 arch=('x86_64')
 license=('Apache')
@@ -17,8 +17,9 @@ sha512sums=('SKIP')
 
 build() {
   cd cryptography
+  echo $RUSTFLAGS
   # https://github.com/pyca/cryptography/issues/9023
-  CC=clang RUSTFLAGS="-Clinker-plugin-lto -Clinker=clang -Clink-arg=-fuse-ld=lld" python setup.py build
+  CC=clang RUSTFLAGS+="-Clinker-plugin-lto -Clinker=clang -Clink-arg=-fuse-ld=lld" python setup.py build
 }
 
 check() {
