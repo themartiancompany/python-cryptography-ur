@@ -24,7 +24,8 @@ build() {
 
 check() {
   cd cryptography
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-311:$PWD/vectors" pytest
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version:$PWD/vectors" pytest
 }
 
 package() {
