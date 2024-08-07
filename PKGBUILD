@@ -37,10 +37,10 @@ makedepends=(
   'git'
   'lld'
   'llvm'
-  'python-build'
-  'python-installer'
-  'python-setuptools-rust'
-  'python-wheel'
+  "${_py}-build"
+  "${_py}-installer"
+  "${_py}-setuptools-rust"
+  "${_py}-wheel"
 )
 checkdepends=(
   "${_py}-pytest"
